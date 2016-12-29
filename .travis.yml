@@ -1,0 +1,8 @@
+language: node_js
+node_js: node
+deploy:
+  provider: heroku
+  api_key: adb4a8f9-60f7-4154-b2d2-b73a07966160
+  app: intense-shelf-90505
+  on:
+    repo: amcavinue/weather-app
