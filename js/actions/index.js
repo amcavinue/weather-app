@@ -27,7 +27,7 @@ function getWeather(zip) {
                 getWeatherError(error)
             );
         });
-    }
+    };
 }
 
 var GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
@@ -46,8 +46,18 @@ function getWeatherError(err) {
     };
 }
 
+var STORE_ZIP = 'STORE_ZIP';
+function storeZip(zip) {
+    return {
+        type: STORE_ZIP,
+        zip: zip
+    };
+}
+
 exports.getWeather = getWeather;
 exports.GET_WEATHER_SUCCESS = GET_WEATHER_SUCCESS;
 exports.getWeatherSuccess = getWeatherSuccess;
 exports.GET_WEATHER_ERROR = GET_WEATHER_ERROR;
 exports.getWeatherError = getWeatherError;
+exports.STORE_ZIP = STORE_ZIP;
+exports.storeZip = storeZip;

@@ -16,6 +16,10 @@ var reducer = function(state, action) {
     } else if (action.type === actions.GET_WEATHER_ERROR) {
         console.log('An error occurred: ' + action.err);
         return state;
+    } else if (action.type === actions.STORE_ZIP) {
+        return update(state, {
+            zip: {$set: action.zip}
+        });
     }
     
     return state;
