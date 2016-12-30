@@ -9,9 +9,10 @@ function getWeatherSuccess(data) {
 }
 
 var GET_WEATHER_ERROR = 'GET_WEATHER_ERROR';
-function getWeatherError() {
+function getWeatherError(err) {
     return {
-        type: GET_WEATHER_ERROR
+        type: GET_WEATHER_ERROR,
+        err: err
     };
 }
 
@@ -21,7 +22,7 @@ function getWeather(zip) {
 
         query.exec(function(err, data) {
             if (err) {
-                return dispatch(getWeatherError());
+                return dispatch(getWeatherError(err));
             }
             return dispatch(getWeatherSuccess(data));
         });
