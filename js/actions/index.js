@@ -1,5 +1,35 @@
 var fetch = require('isomorphic-fetch');
 
+function getWeather(zip) {
+    return function(dispatch) {
+        return fetch('/weather')
+        .then(function(response) {
+            // If any response other than successful.
+            if (response.status < 200 || response.status >= 300) {
+                var error = new Error(response.statusText)
+                error.response = response
+                throw error;
+            }
+            return response;
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data, 19);
+            return dispatch(
+                getWeatherSuccess(data)
+            );
+        })
+        .catch(function(error) {
+            console.log(error, 19);
+            return dispatch(
+                getWeatherError(error)
+            );
+        });
+    }
+}
+
 var GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
 function getWeatherSuccess(data) {
     return {
@@ -14,38 +44,6 @@ function getWeatherError(err) {
         type: GET_WEATHER_ERROR,
         err: err
     };
-}
-
-function getWeather(zip) {
-    return function(dispatch) {
-        debugger;
-        var query = 'select * from weather.forecast where (location =' + zip + ')';
-        var url = 'http://query.yahooapis.com/vi/public/yql?q=' + encodeURIComponent(query) + '&format=json';
-        debugger;
-        console.log(url, 23);
-        return fetch(url)
-        .then(function(response) {
-            // If any response other than successful.
-            if (response.status < 200 || response.status >= 300) {
-                var error = new Error(response.statusText)
-                error.response = response
-                throw error;
-            }
-            return response;
-        })
-        .then(function(response) {
-            debugger;
-            return response.json();
-        })
-        .then(function(data) {
-            debugger;
-            return dispatch(getWeatherSuccess(data));
-        })
-        .catch(function(err) {
-            debugger;
-            return dispatch(getWeatherError(err));
-        });
-    }
 }
 
 exports.getWeather = getWeather;
