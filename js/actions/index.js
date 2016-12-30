@@ -1,4 +1,4 @@
-var YQL = require('yql');
+var fetch = require('isomorphic-fetch');
 
 var GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
 function getWeatherSuccess(data) {
@@ -18,15 +18,33 @@ function getWeatherError(err) {
 
 function getWeather(zip) {
     return function(dispatch) {
-        var query = new YQL('select * from weather.forecast where (location =' + zip + ')');
-
-        query.exec(function(err, data) {
-            if (err) {
-                return dispatch(getWeatherError(err));
+        debugger;
+        var query = 'select * from weather.forecast where (location =' + zip + ')';
+        var url = 'http://query.yahooapis.com/vi/public/yql?q=' + encodeURIComponent(query) + '&format=json';
+        debugger;
+        console.log(url, 23);
+        return fetch(url)
+        .then(function(response) {
+            // If any response other than successful.
+            if (response.status < 200 || response.status >= 300) {
+                var error = new Error(response.statusText)
+                error.response = response
+                throw error;
             }
+            return response;
+        })
+        .then(function(response) {
+            debugger;
+            return response.json();
+        })
+        .then(function(data) {
+            debugger;
             return dispatch(getWeatherSuccess(data));
+        })
+        .catch(function(err) {
+            debugger;
+            return dispatch(getWeatherError(err));
         });
-
     }
 }
 
