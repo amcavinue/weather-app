@@ -12,9 +12,11 @@ chai.use(chaiHttp);
 
 describe('Server.js', function() {
     it('Gets the weather data',  function(done) {
+        // this.timeout(7000);
         chai.request(app)
-            .get('/weather')
+            .get('/weather/42.3601/-71.0589')
             .end(function(err, res) {
+                console.log(res.body);
                 res.should.have.status(200);
                 done();
             });

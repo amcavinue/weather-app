@@ -2,7 +2,7 @@ var fetch = require('isomorphic-fetch');
 
 function getWeather(zip) {
     return function(dispatch) {
-        return fetch('/weather')
+        return fetch('/weather/' + zip)
         .then(function(response) {
             // If any response other than successful.
             if (response.status < 200 || response.status >= 300) {

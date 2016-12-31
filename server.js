@@ -9,31 +9,44 @@ app.use(express.static('build'));  // Serve the build folder.
 app.use(bodyParser.json()); // Used for getting parameters in post requests.
 
 /**
+ * Initial weather data structure.
+ */
+var weatherData = {
+    
+}
+
+/**
  * Routes
  */
- app.get('/weather', function(req, res) {
-    var weatherData, err;
-    getWeather(req.zip, function(err, weatherData) {
+ app.get('/weather/:lat/:long', function(req, res) {
+    getWeather(req.params.lat, req.params.long, function(err, data) {
         if (err) {
-            res.status(400).json(err);
+            return res.status(400).json(err);
         }
-        res.status(200).json(weatherData);
+        convertData(data);
+        return res.status(200).json(weatherData);
     });
 });
 
 /**
  * Helper Functions
  */
-function getWeather(zip, callback) {
-    var query = 'select * from weather.forecast where (location =' + zip + ')';
-    var url = 'http://query.yahooapis.com/vi/public/yql?q=' + encodeURIComponent(query) + '&format=json';
-    
-    request('http://www.google.com', function (error, response, body) {
+function getWeather(lat, long, callback) {
+    var url = 'https://api.darksky.net/forecast/df481b0391bf8f92395f9ec35c3b2881/' + lat + ',' + long;
+    request(url, function (error, response, body) {
         if (error) {
-            callback(null, error);
+            return callback(error, null);
         }
-        callback(body, null);
+        return callback(null, body);
     });
+}
+
+/*
+Converts the data from whatever api into the data model 
+above, so the front end always recieves the same data.
+*/
+function convertData(data) {
+    weatherData = data;
 }
  
 /**
