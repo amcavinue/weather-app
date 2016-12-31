@@ -1,9 +1,9 @@
 var fetch = require('isomorphic-fetch');
 var $ = require('jquery');
 
-function getWeather(zip) {
+function getWeather(lat, long) {
     return function(dispatch) {
-        return fetch('/weather/' + zip)
+        return fetch('/weather/' + lat + '/' + long)
         .then(function(response) {
             // If any response other than successful.
             if (response.status < 200 || response.status >= 300) {
@@ -17,13 +17,11 @@ function getWeather(zip) {
             return response.json();
         })
         .then(function(data) {
-            console.log(data, 19);
             return dispatch(
                 getWeatherSuccess(data)
             );
         })
         .catch(function(error) {
-            console.log(error, 19);
             return dispatch(
                 getWeatherError(error)
             );
@@ -54,6 +52,7 @@ function getLoc() {
             url: '//ipinfo.io',
             dataType: 'jsonp'
         }).done(function(data) {
+            // Break up the numbers from the string and then convert them into Number types.
             var location = data.loc.match(/-?\d+(\.\d+)?/gi);
             location = [Number(location[0]), Number(location[1])];
             return dispatch(
@@ -87,14 +86,6 @@ function getLocError(err) {
     }
 }
 
-/*var STORE_ZIP = 'STORE_ZIP';
-function storeZip(zip) {
-    return {
-        type: STORE_ZIP,
-        zip: zip
-    };
-}*/
-
 exports.getWeather = getWeather;
 exports.GET_WEATHER_SUCCESS = GET_WEATHER_SUCCESS;
 exports.getWeatherSuccess = getWeatherSuccess;
@@ -105,5 +96,3 @@ exports.GET_LOC_SUCCESS = GET_LOC_SUCCESS;
 exports.getLocSuccess = getLocSuccess;
 exports.GET_LOC_ERROR = GET_LOC_ERROR;
 exports.getLocError = getLocError;
-/*exports.STORE_ZIP = STORE_ZIP;
-exports.storeZip = storeZip;*/

@@ -11,7 +11,7 @@ var initialState = {
 var reducer = function(state, action) {
     state = state || initialState;
     
-    if (action.type === actions.GET_WEATHER) {
+    if (action.type === actions.GET_WEATHER_SUCCESS) {
         return update(state, {
             weather: {$set: action.data}
         });

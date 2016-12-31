@@ -6,7 +6,10 @@ var actions = require('./actions/index');
 var store = require('./store');
 
 document.addEventListener('DOMContentLoaded', function() {
-    store.dispatch(actions.getLoc());
+    store.dispatch(actions.getLoc()).then(function() {
+        var state = store.getState();
+        store.dispatch(actions.getWeather(state.lat, state.long));
+    });
     
     ReactDOM.render(
         <div>
