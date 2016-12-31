@@ -6,14 +6,7 @@ var actions = require('./actions/index');
 var store = require('./store');
 
 document.addEventListener('DOMContentLoaded', function() {
-    var zip;
-    do{
-        zip = window.prompt('Please enter your 5-digit zip code.');
-    } while(zip == null || zip == "" || !zip.match(/^\d{5}$/igm));
-    zip = Number(zip);
-    store.dispatch(actions.storeZip(zip));
-    
-    store.dispatch(actions.getWeather(zip));
+    store.dispatch(actions.getLoc());
     
     ReactDOM.render(
         <div>

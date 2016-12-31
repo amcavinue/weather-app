@@ -21,11 +21,11 @@ var weatherData = {
     forecast: {
         hourly: {
             summary: null,
-            hours: []
+            hours: [] // Hours and days should be filled with objects identical to this.currently.
         },
         daily: {
             summary: null,
-            days: []
+            days: [] // Hours and days should be filled with objects identical to this.currently.
         }
     }
 }
