@@ -1,5 +1,5 @@
 var path = require('path');
-
+var net = require('net');
 var webpack = require('webpack');
 
 module.exports = {
