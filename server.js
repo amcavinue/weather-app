@@ -159,8 +159,8 @@ function convertData(data) {
  * Run the server
  */
 if (require.main === module) {
-    app.listen(8080, function() {
-        console.log('Listening on localhost');
+    app.listen(process.env.PORT || 8080, function() {
+        console.log('Listening on: ' + process.env.PORT || 8080);
     });
 };
 
