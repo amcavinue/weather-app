@@ -31,19 +31,6 @@ var weatherData = {
 }
 
 /**
- * Routes
- */
- app.get('/weather/:lat/:long', function(req, res) {
-    getWeather(req.params.lat, req.params.long, function(err, data) {
-        if (err) {
-            return res.status(400).json(err);
-        }
-        convertData(JSON.parse(data));
-        return res.status(200).json(weatherData);
-    });
-});
-
-/**
  * Helper Functions
  */
 function getWeather(lat, long, callback) {
@@ -154,6 +141,19 @@ function convertData(data) {
         }
     }
 }
+ 
+ /**
+ * Routes
+ */
+ app.get('/weather/:lat/:long', function(req, res) {
+    getWeather(req.params.lat, req.params.long, function(err, data) {
+        if (err) {
+            return res.status(400).json(err);
+        }
+        convertData(JSON.parse(data));
+        return res.status(200).json(weatherData);
+    });
+});
  
 /**
  * Run the server
