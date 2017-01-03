@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(function() {
         var state = store.getState();
         return store.dispatch(actions.getWeather(state.lat, state.long));
-    }).then(function() {
+    })
+    .then(function() {
         ReactDOM.render(
             <Provider store={store}>
                 <WeatherApp />

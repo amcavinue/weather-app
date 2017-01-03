@@ -1,5 +1,4 @@
 var fetch = require('isomorphic-fetch');
-var $ = require('jquery');
 
 function getWeather(lat, long) {
     return function(dispatch) {
@@ -47,26 +46,38 @@ function getWeatherError(err) {
 
 function getLoc() {
     return function(dispatch) {
-        return $.ajax({
+        var init = {
             method: 'GET',
-            url: '//ipinfo.io',
-            dataType: 'jsonp'
-        }).done(function(data) {
-            // Break up the numbers from the string and then convert them into Number types.
+            mode: 'cors',
+            cache: 'default'
+        };
+        
+        return fetch('//ipinfo.io/json', init)
+        .then(function(response) {
+            // If any response other than successful.
+            if (response.status < 200 || response.status >= 300) {
+                var error = new Error(response.statusText)
+                error.response = response
+                throw error;
+            }
+            return response;
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
             var location = data.loc.match(/-?\d+(\.\d+)?/gi);
             location = [Number(location[0]), Number(location[1])];
             return dispatch(
                 getLocSuccess(location[0], location[1])
             );
-        }).fail(function (jqXHR, error, errorThrown) {
+        })
+        .catch(function(error) {
             return dispatch(
                 getLocError(error)
             );
-            /*console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);*/
         });
-    }
+    };
 }
 
 var GET_LOC_SUCCESS = 'GET_LOC_SUCCESS';
