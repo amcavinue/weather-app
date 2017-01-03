@@ -48,8 +48,6 @@ Converts the data from whatever api into the data model
 above, so the front end always recieves the same data.
 */
 function convertData(data) {
-    console.log(data, 51);
-    
     weatherData.currently = {
             summary: data.currently.summary,
             precipProbability: data.currently.precipProbability,
@@ -57,8 +55,8 @@ function convertData(data) {
             feelsLike: data.currently.apparentTemperature
         };
     
-    weatherData.forecast.hourly.summary = data.forecast.hourly.summary;
-    weatherData.forecast.hourly.hours = data.forecast.hourly.data.map(function(hourlyData) {
+    weatherData.forecast.hourly.summary = data.hourly.summary;
+    weatherData.forecast.hourly.hours = data.hourly.data.map(function(hourlyData) {
         return {
             summary: hourlyData.summary,
             precipProbability: hourlyData.precipProbability,
@@ -67,8 +65,8 @@ function convertData(data) {
         };
     });
     
-    weatherData.forecast.daily.summary = data.forecast.daily.summary;
-    weatherData.forecast.daily.days = data.forecast.daily.data.map(function(dailyData) {
+    weatherData.forecast.daily.summary = data.daily.summary;
+    weatherData.forecast.daily.days = data.daily.data.map(function(dailyData) {
         return {
             summary: dailyData.summary,
             precipProbability: dailyData.precipProbability,
