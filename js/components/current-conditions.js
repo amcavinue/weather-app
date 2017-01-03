@@ -1,20 +1,15 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var LineChart = require("react-chartjs").Line;
+var moment = require('moment');
 
 var CurrentConditions = function(props) {
-    var time = new Date();
-    var hours = time.getHours();
-    var mins = time.getMinutes();
-    
     var hourlyTemp = {
-        labels: [ (hours + 1) + ':' + mins,  (hours + 2) + ':' + mins, (hours + 3) + ':' + mins, (hours + 4) + ':' + mins, (hours + 5) + ':' + mins],
+        labels: [moment().add(1, 'h').format("hh:mm"), moment().add(2, 'h').format("hh:mm"), moment().add(3, 'h').format("hh:mm"), moment().add(4, 'h').format("hh:mm"), moment().add(5, 'h').format("hh:mm")],
         datasets: [{
             data: [props.weather.forecast.hourly.hours[0].temperature, props.weather.forecast.hourly.hours[1].temperature, props.weather.forecast.hourly.hours[2].temperature, props.weather.forecast.hourly.hours[3].temperature, props.weather.forecast.hourly.hours[4].temperature]
         }]
     };
-    
-    console.log(hourlyTemp, 17);
     
     return (
         <section>

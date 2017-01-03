@@ -8,7 +8,8 @@ var store = require('./store');
 var WeatherApp = require('./components/weather-app');
 
 document.addEventListener('DOMContentLoaded', function() {
-    store.dispatch(actions.getLoc()).then(function() {
+    store.dispatch(actions.getLoc())
+    .then(function() {
         var state = store.getState();
         return store.dispatch(actions.getWeather(state.lat, state.long));
     }).then(function() {
