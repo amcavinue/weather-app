@@ -48,98 +48,34 @@ Converts the data from whatever api into the data model
 above, so the front end always recieves the same data.
 */
 function convertData(data) {
-    weatherData = {
-        currently: {
+    console.log(data, 51);
+    
+    weatherData.currently = {
             summary: data.currently.summary,
             precipProbability: data.currently.precipProbability,
             temperature: data.currently.temperature,
             feelsLike: data.currently.apparentTemperature
-        },
-        forecast: {
-            hourly: {
-                summary: data.hourly.summary,
-                hours: [
-                    {
-                        summary: data.hourly.data[0].summary,
-                        precipProbability: data.hourly.data[0].precipProbability,
-                        temperature: data.hourly.data[0].temperature,
-                        feelsLike: data.hourly.data[0].apparentTemperature
-                    },
-                    {
-                        summary: data.hourly.data[1].summary,
-                        precipProbability: data.hourly.data[1].precipProbability,
-                        temperature: data.hourly.data[1].temperature,
-                        feelsLike: data.hourly.data[1].apparentTemperature
-                    },
-                    {
-                        summary: data.hourly.data[2].summary,
-                        precipProbability: data.hourly.data[2].precipProbability,
-                        temperature: data.hourly.data[2].temperature,
-                        feelsLike: data.hourly.data[2].apparentTemperature
-                    },
-                    {
-                        summary: data.hourly.data[3].summary,
-                        precipProbability: data.hourly.data[3].precipProbability,
-                        temperature: data.hourly.data[3].temperature,
-                        feelsLike: data.hourly.data[3].apparentTemperature
-                    },
-                    {
-                        summary: data.hourly.data[4].summary,
-                        precipProbability: data.hourly.data[4].precipProbability,
-                        temperature: data.hourly.data[4].temperature,
-                        feelsLike: data.hourly.data[4].apparentTemperature
-                    }
-                ]
-            },
-            daily: {
-                summary: data.daily.summary,
-                days: [
-                    {
-                        summary: data.daily.data[0].summary,
-                        precipProbability: data.daily.data[0].precipProbability,
-                        temperature: data.daily.data[0].temperature,
-                        feelsLike: data.daily.data[0].apparentTemperature
-                    },
-                    {
-                        summary: data.daily.data[1].summary,
-                        precipProbability: data.daily.data[1].precipProbability,
-                        temperature: data.daily.data[1].temperature,
-                        feelsLike: data.daily.data[1].apparentTemperature
-                    },
-                    {
-                        summary: data.daily.data[2].summary,
-                        precipProbability: data.daily.data[2].precipProbability,
-                        temperature: data.daily.data[2].temperature,
-                        feelsLike: data.daily.data[2].apparentTemperature
-                    },
-                    {
-                        summary: data.daily.data[3].summary,
-                        precipProbability: data.daily.data[3].precipProbability,
-                        temperature: data.daily.data[3].temperature,
-                        feelsLike: data.daily.data[3].apparentTemperature
-                    },
-                    {
-                        summary: data.daily.data[4].summary,
-                        precipProbability: data.daily.data[4].precipProbability,
-                        temperature: data.daily.data[4].temperature,
-                        feelsLike: data.daily.data[4].apparentTemperature
-                    },
-                    {
-                        summary: data.daily.data[5].summary,
-                        precipProbability: data.daily.data[5].precipProbability,
-                        temperature: data.daily.data[5].temperature,
-                        feelsLike: data.daily.data[5].apparentTemperature
-                    },
-                    {
-                        summary: data.daily.data[6].summary,
-                        precipProbability: data.daily.data[6].precipProbability,
-                        temperature: data.daily.data[6].temperature,
-                        feelsLike: data.daily.data[6].apparentTemperature
-                    }
-                ]
-            }
-        }
-    }
+        };
+    
+    weatherData.forecast.hourly.summary = data.forecast.hourly.summary;
+    weatherData.forecast.hourly.hours = data.forecast.hourly.data.map(function(hourlyData) {
+        return {
+            summary: hourlyData.summary,
+            precipProbability: hourlyData.precipProbability,
+            temperature: hourlyData.temperature,
+            feelsLike: hourlyData.apparentTemperature
+        };
+    });
+    
+    weatherData.forecast.daily.summary = data.forecast.daily.summary;
+    weatherData.forecast.daily.days = data.forecast.daily.data.map(function(dailyData) {
+        return {
+            summary: dailyData.summary,
+            precipProbability: dailyData.precipProbability,
+            temperature: dailyData.temperature,
+            feelsLike: dailyData.apparentTemperature
+        };
+    });
 }
  
  /**
