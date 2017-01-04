@@ -1,11 +1,20 @@
 var fetch = require('isomorphic-fetch');
 
-function getWeather(lat, long) {
+
+function getCurrWeather(lat, long) {
     return function(dispatch) {
-        return fetch('/weather/' + lat + '/' + long)
+        var init = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default'
+        };
+        var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        
+        return fetch(url, init)
         .then(function(response) {
             // If any response other than successful.
             if (response.status < 200 || response.status >= 300) {
+                console.log(response, 16);
                 var error = new Error(response.statusText)
                 error.response = response
                 throw error;
@@ -17,29 +26,133 @@ function getWeather(lat, long) {
         })
         .then(function(data) {
             return dispatch(
-                getWeatherSuccess(data)
+                getCurrWeatherSuccess(data)
             );
         })
         .catch(function(error) {
             return dispatch(
-                getWeatherError(error)
+                getCurrWeatherError(error)
             );
         });
     };
 }
 
-var GET_WEATHER_SUCCESS = 'GET_WEATHER_SUCCESS';
-function getWeatherSuccess(data) {
+var GET_CURR_WEATHER_SUCCESS = 'GET_CURR_WEATHER_SUCCESS';
+function getCurrWeatherSuccess(data) {
     return {
-        type: GET_WEATHER_SUCCESS,
+        type: GET_CURR_WEATHER_SUCCESS,
         data: data
     };
 }
 
-var GET_WEATHER_ERROR = 'GET_WEATHER_ERROR';
-function getWeatherError(err) {
+var GET_CURR_WEATHER_ERROR = 'GET_CURR_WEATHER_ERROR';
+function getCurrWeatherError(err) {
     return {
-        type: GET_WEATHER_ERROR,
+        type: GET_CURR_WEATHER_ERROR,
+        err: err
+    };
+}
+
+function getForecastHourly(lat, long) {
+    return function(dispatch) {
+        var init = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default'
+        };
+        var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        
+        return fetch(url, init)
+        .then(function(response) {
+            // If any response other than successful.
+            if (response.status < 200 || response.status >= 300) {
+                console.log(response, 16);
+                var error = new Error(response.statusText)
+                error.response = response
+                throw error;
+            }
+            return response;
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            return dispatch(
+                getForecastHourlySuccess(data)
+            );
+        })
+        .catch(function(error) {
+            return dispatch(
+                getForecastHourlyError(error)
+            );
+        });
+    };
+}
+
+var GET_FORECAST_HOURLY_SUCCESS = 'GET_FORECAST_HOURLY_SUCCESS';
+function getForecastHourlySuccess(data) {
+    return {
+        type: GET_FORECAST_HOURLY_SUCCESS,
+        data: data
+    };
+}
+
+var GET_FORECAST_HOURLY_ERROR = 'GET_FORECAST_HOURLY_ERROR';
+function getForecastHourlyError(err) {
+    return {
+        type: GET_FORECAST_HOURLY_ERROR,
+        err: err
+    };
+}
+
+function getForecastDaily(lat, long) {
+    return function(dispatch) {
+        var init = {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'default'
+        };
+        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        
+        return fetch(url, init)
+        .then(function(response) {
+            // If any response other than successful.
+            if (response.status < 200 || response.status >= 300) {
+                console.log(response, 16);
+                var error = new Error(response.statusText)
+                error.response = response
+                throw error;
+            }
+            return response;
+        })
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            return dispatch(
+                getForecastDailySuccess(data)
+            );
+        })
+        .catch(function(error) {
+            return dispatch(
+                getForecastDailyError(error)
+            );
+        });
+    };
+}
+
+var GET_FORECAST_DAILY_SUCCESS = 'GET_FORECAST_DAILY_SUCCESS';
+function getForecastDailySuccess(data) {
+    return {
+        type: GET_FORECAST_DAILY_SUCCESS,
+        data: data
+    };
+}
+
+var GET_FORECAST_DAILY_ERROR = 'GET_FORECAST_DAILY_ERROR';
+function getForecastDailyError(err) {
+    return {
+        type: GET_FORECAST_DAILY_ERROR,
         err: err
     };
 }
@@ -97,11 +210,24 @@ function getLocError(err) {
     }
 }
 
-exports.getWeather = getWeather;
-exports.GET_WEATHER_SUCCESS = GET_WEATHER_SUCCESS;
-exports.getWeatherSuccess = getWeatherSuccess;
-exports.GET_WEATHER_ERROR = GET_WEATHER_ERROR;
-exports.getWeatherError = getWeatherError;
+exports.getCurrWeather = getCurrWeather;
+exports.GET_CURR_WEATHER_SUCCESS = GET_CURR_WEATHER_SUCCESS;
+exports.getCurrWeatherSuccess = getCurrWeatherSuccess;
+exports.GET_CURR_WEATHER_ERROR = GET_CURR_WEATHER_ERROR;
+exports.getCurrWeatherError = getCurrWeatherError;
+
+exports.getForecastHourly = getForecastHourly;
+exports.GET_FORECAST_HOURLY_SUCCESS = GET_FORECAST_HOURLY_SUCCESS;
+exports.getForecastHourlySuccess = getForecastHourlySuccess;
+exports.GET_FORECAST_HOURLY_ERROR = GET_FORECAST_HOURLY_ERROR;
+exports.getForecastHourlyError = getForecastHourlyError;
+
+exports.getForecastDaily = getForecastDaily;
+exports.GET_FORECAST_DAILY_SUCCESS = GET_FORECAST_DAILY_SUCCESS;
+exports.getForecastDailySuccess = getForecastDailySuccess;
+exports.GET_FORECAST_DAILY_ERROR = GET_FORECAST_DAILY_ERROR;
+exports.getForecastDailyError = getForecastDailyError;
+
 exports.getLoc = getLoc;
 exports.GET_LOC_SUCCESS = GET_LOC_SUCCESS;
 exports.getLocSuccess = getLocSuccess;
