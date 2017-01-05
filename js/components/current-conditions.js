@@ -12,7 +12,7 @@ var CurrentConditions = (props) => {
     };
     
     for (let i = 0; i < 5; i++) {
-        hourlyTemp.labels.push(moment().add(3 * (i + 1)).format("hh:mm"));
+        hourlyTemp.labels.push(moment().add(3 * (i + 1), 'h').format("ha"));
         hourlyTemp.datasets[0].data.push(props.weather.forecast.hours[i].temperature);
     }
     

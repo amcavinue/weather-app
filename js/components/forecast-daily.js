@@ -12,7 +12,7 @@ var ForecastDaily = (props) => {
   };
   
   for (let i = 0; i < 5; i++) {
-    dailyTemp.labels.push(moment().add(1, 'd').format("dddd"));
+    dailyTemp.labels.push(moment().add(1 * (i+1), 'd').format("dddd"));
     dailyTemp.datasets[0].data.push(props.days[i].temperature);
   }
   
