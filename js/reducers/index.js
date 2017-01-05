@@ -22,8 +22,6 @@ var reducer = function(state, action) {
     state = state || initialState;
     
     if (action.type === actions.GET_CURR_WEATHER_SUCCESS) {
-        console.log(action.data, 73);
-        
         return update(state, {
             weather: {
                 currently: {
@@ -37,7 +35,6 @@ var reducer = function(state, action) {
         console.log('An error occurred: ' + action.err);
         return state;
     } else if (action.type === actions.GET_FORECAST_HOURLY_SUCCESS) {
-        console.log(action.data, 83);
         var hours = [];
         // Only get the next 15 hours (3 hour increments * 5 times).
         for (let i = 0; i < 5; i++) {
@@ -58,7 +55,6 @@ var reducer = function(state, action) {
         console.log('An error occurred: ' + action.err);
         return state;
     } else if (action.type === actions.GET_FORECAST_DAILY_SUCCESS) {
-        console.log(action.data, 83);
         var days = [];
         // Only get the next 5 days.
         for (let i = 0; i < 5; i++) {

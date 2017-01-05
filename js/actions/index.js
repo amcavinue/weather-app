@@ -1,6 +1,5 @@
 var fetch = require('isomorphic-fetch');
 
-
 function getCurrWeather(lat, long) {
     return function(dispatch) {
         var init = {
@@ -14,7 +13,6 @@ function getCurrWeather(lat, long) {
         .then(function(response) {
             // If any response other than successful.
             if (response.status < 200 || response.status >= 300) {
-                console.log(response, 16);
                 var error = new Error(response.statusText)
                 error.response = response
                 throw error;
@@ -66,7 +64,6 @@ function getForecastHourly(lat, long) {
         .then(function(response) {
             // If any response other than successful.
             if (response.status < 200 || response.status >= 300) {
-                console.log(response, 16);
                 var error = new Error(response.statusText)
                 error.response = response
                 throw error;
@@ -118,7 +115,6 @@ function getForecastDaily(lat, long) {
         .then(function(response) {
             // If any response other than successful.
             if (response.status < 200 || response.status >= 300) {
-                console.log(response, 16);
                 var error = new Error(response.statusText)
                 error.response = response
                 throw error;

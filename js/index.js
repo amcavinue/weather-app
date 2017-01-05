@@ -22,8 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return store.dispatch(actions.getForecastDaily(state.lat, state.long));
     })
     .then(function() {
-        var state = store.getState();
-        console.log(state, 25);
+        var state = store.getState()
         
         ReactDOM.render(
             <Provider store={store}>
