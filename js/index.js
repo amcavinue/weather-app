@@ -7,21 +7,21 @@ var actions = require('./actions/index');
 var store = require('./store');
 var WeatherApp = require('./components/weather-app');
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     store.dispatch(actions.getLoc())
-    .then(function() {
+    .then(() => {
         let state = store.getState();
         return store.dispatch(actions.getCurrWeather(state.lat, state.long));
     })
-    .then(function() {
+    .then(() => {
         let state = store.getState();
         return store.dispatch(actions.getForecastHourly(state.lat, state.long));
     })
-    .then(function() {
+    .then(() => {
         let state = store.getState();
         return store.dispatch(actions.getForecastDaily(state.lat, state.long));
     })
-    .then(function() {
+    .then(() => {
         let state = store.getState()
         
         ReactDOM.render(

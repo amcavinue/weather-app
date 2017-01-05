@@ -1,7 +1,7 @@
 var fetch = require('isomorphic-fetch');
 
 function getCurrWeather(lat, long) {
-    return function(dispatch) {
+    return (dispatch) => {
         var init = {
             method: 'GET',
             mode: 'cors',
@@ -53,7 +53,7 @@ function getCurrWeatherError(err) {
 }
 
 function getForecastHourly(lat, long) {
-    return function(dispatch) {
+    return (dispatch) => {
         var init = {
             method: 'GET',
             mode: 'cors',
@@ -105,7 +105,7 @@ function getForecastHourlyError(err) {
 }
 
 function getForecastDaily(lat, long) {
-    return function(dispatch) {
+    return (dispatch) => {
         var init = {
             method: 'GET',
             mode: 'cors',
@@ -157,7 +157,7 @@ function getForecastDailyError(err) {
 }
 
 function getLoc() {
-    return function(dispatch) {
+    return (dispatch) => {
         var init = {
             method: 'GET',
             mode: 'cors',

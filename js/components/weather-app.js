@@ -5,7 +5,7 @@ var connect = require('react-redux').connect;
 var CurrentConditions = require('./current-conditions');
 var ForecastDaily = require('./forecast-daily');
 
-var WeatherApp = function(props) {
+var WeatherApp = (props) => {
     return (
         <div>
             <h1>Weather for your area</h1>

@@ -3,7 +3,7 @@ var ReactDOM = require('react-dom');
 var LineChart = require("react-chartjs").Line;
 var moment = require('moment');
 
-var CurrentConditions = function(props) {
+var CurrentConditions = (props) => {
     var hourlyTemp = {
         labels: [],
         datasets: [{

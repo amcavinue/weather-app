@@ -18,7 +18,7 @@ var initialState = {
     }
 };
 
-var reducer = function(state, action) {
+var reducer = (state, action) => {
     state = state || initialState;
     
     if (action.type === actions.GET_CURR_WEATHER_SUCCESS) {

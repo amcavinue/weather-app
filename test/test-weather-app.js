@@ -10,8 +10,8 @@ var actions = require('../js/actions/index');
 var WeatherApp = require('../js/components/weather-app');
 var CurrentConditions = require('../js/components/current-conditions');
 
-describe('WeatherApp Component', function() {
-  it('Renders the component',  function() {
+describe('WeatherApp Component', () => {
+  it('Renders the component',  () => {
     store.dispatch(
       actions.getCurrWeatherSuccess(
         {"coord":{"lon":-81.86,"lat":41.14},"weather":[{"id":601,"main":"Snow","description":"snow","icon":"13d"},{"id":701,"main":"Mist","description":"mist","icon":"50d"}],"base":"stations","main":{"temp":17.6,"pressure":1014,"humidity":78,"temp_min":15.8,"temp_max":19.4},"visibility":1207,"wind":{"speed":13.87,"deg":270},"clouds":{"all":90},"dt":1483653060,"sys":{"type":1,"id":2182,"message":0.1901,"country":"US","sunrise":1483620769,"sunset":1483654456},"id":5162512,"name":"Medina","cod":200}
