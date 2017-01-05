@@ -10,19 +10,19 @@ var WeatherApp = require('./components/weather-app');
 document.addEventListener('DOMContentLoaded', function() {
     store.dispatch(actions.getLoc())
     .then(function() {
-        var state = store.getState();
+        let state = store.getState();
         return store.dispatch(actions.getCurrWeather(state.lat, state.long));
     })
     .then(function() {
-        var state = store.getState();
+        let state = store.getState();
         return store.dispatch(actions.getForecastHourly(state.lat, state.long));
     })
     .then(function() {
-        var state = store.getState();
+        let state = store.getState();
         return store.dispatch(actions.getForecastDaily(state.lat, state.long));
     })
     .then(function() {
-        var state = store.getState()
+        let state = store.getState()
         
         ReactDOM.render(
             <Provider store={store}>
