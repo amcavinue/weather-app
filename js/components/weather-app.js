@@ -9,7 +9,9 @@ var WeatherApp = function(props) {
         <div>
             <h1>Weather for your area</h1>
             <CurrentConditions weather={props.weather} />
-            <span><a href="https://darksky.net/poweredby/">Powered by Dark Sky</a></span>
+            <span>
+                <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+            </span>
         </div>
     );
 };

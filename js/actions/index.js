@@ -7,7 +7,8 @@ function getCurrWeather(lat, long) {
             mode: 'cors',
             cache: 'default'
         };
-        var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + 
+            lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
         
         return fetch(url, init)
         .then(function(response) {
@@ -58,7 +59,8 @@ function getForecastHourly(lat, long) {
             mode: 'cors',
             cache: 'default'
         };
-        var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + 
+            lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
         
         return fetch(url, init)
         .then(function(response) {
@@ -109,7 +111,8 @@ function getForecastDaily(lat, long) {
             mode: 'cors',
             cache: 'default'
         };
-        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + 
+            lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
         
         return fetch(url, init)
         .then(function(response) {
