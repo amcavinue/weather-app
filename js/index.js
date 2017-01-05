@@ -11,8 +11,20 @@ document.addEventListener('DOMContentLoaded', function() {
     store.dispatch(actions.getLoc())
     .then(function() {
         var state = store.getState();
-        return store.dispatch(actions.getWeather(state.lat, state.long));
-    }).then(function() {
+        return store.dispatch(actions.getCurrWeather(state.lat, state.long));
+    })
+    .then(function() {
+        var state = store.getState();
+        return store.dispatch(actions.getForecastHourly(state.lat, state.long));
+    })
+    .then(function() {
+        var state = store.getState();
+        return store.dispatch(actions.getForecastDaily(state.lat, state.long));
+    })
+    .then(function() {
+        var state = store.getState();
+        console.log(state, 25);
+        
         ReactDOM.render(
             <Provider store={store}>
                 <WeatherApp />
