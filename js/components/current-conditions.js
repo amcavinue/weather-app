@@ -25,11 +25,7 @@ var CurrentConditions = (props) => {
                  { Math.round((props.weather.currently.temperature - 32) * (5/9)) }
                  &deg;C
              </div>
-            <div>The humidity is { Math.round(props.weather.currently.humidity) }
-                &deg;F&#47;
-                { Math.round((props.weather.currently.humidity - 32) * (5/9)) }
-                &deg;C
-            </div>
+            <div>The humidity is { Math.round(props.weather.currently.humidity) }&#37;</div>
             <h4>Hourly</h4>
             <LineChart data={ hourlyTemp } />
         </section>

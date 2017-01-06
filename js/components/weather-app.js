@@ -11,9 +11,6 @@ var WeatherApp = (props) => {
             <h1>Weather for your area</h1>
             <CurrentConditions weather={props.weather} />
             <ForecastDaily days={props.weather.forecast.days}/>
-            <span>
-                <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
-            </span>
         </div>
     );
 };
