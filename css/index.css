@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f3f4f5;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  height: 100%;
+}
+
+#app {
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 1em;
+  height: 100vh;
+}
