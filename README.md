@@ -21,6 +21,7 @@ The live site can be seen at: [http://intense-shelf-90505.herokuapp.com/](http:/
 ### Technical
 - The app is built mainly with front-end technologies, specifically React, Redux, JavaScript, HTML, and CSS. Helper libraries such as Lodash, Chart.js, and Minute.js were used as well.
 - It utilizes ES6 features of JavaScript, making the code easier to read and maintain. These features are transpiled using Babel to work on all browsers.
+- The [Airbnb JavaScript sytle guide](https://github.com/airbnb/javascript) is followed to ensure consistent, clean code is produced.
 - All front-end components have been tested using Mocha, and the production version passes all tests.
 - The front end is fully responsive and follows clean usability principles.
 - Continuous integration using Travis CI was used during development.

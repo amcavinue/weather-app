@@ -69,6 +69,10 @@ var reducer = (state = initialState, action) => {
             lat: {$set: action.lat},
             long: {$set: action.long}
         });
+    } else if (action.type === actions.resetError) {
+        return update(state, {
+            error: {$set: null}
+        });
     } else if (
         action.type === actions.GET_FORECAST_DAILY_ERROR ||
         action.type === actions.GET_LOC_ERROR ||
@@ -78,7 +82,7 @@ var reducer = (state = initialState, action) => {
     ) {
         console.log('An error occurred: ' + action.err);
         return update(state, {
-            error: {$set: 'An error occurred while loading data for your area. Please reload the page or try again later.'}
+            error: {$set: action.err}
         });
     }
     

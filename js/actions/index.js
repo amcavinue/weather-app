@@ -208,7 +208,7 @@ function getLocSuccess(lat, long) {
         type: GET_LOC_SUCCESS,
         lat: lat,
         long: long
-    }
+    };
 }
 
 var GET_LOC_ERROR = 'GET_LOC_ERROR';
@@ -216,7 +216,7 @@ function getLocError(err) {
     return {
         type: GET_LOC_ERROR,
         err: err
-    }
+    };
 }
 
 var GLOBAL_ERROR = 'GLOBAL_ERROR';
@@ -224,7 +224,14 @@ function globalError(err) {
     return {
         type: GLOBAL_ERROR,
         err: err
-    }
+    };
+}
+
+var RESET_ERROR = 'RESET_ERROR';
+function resetError() {
+    return {
+        type: RESET_ERROR
+    };
 }
 
 exports.getCurrWeather = getCurrWeather;
@@ -253,3 +260,6 @@ exports.getLocError = getLocError;
 
 exports.GLOBAL_ERROR = GLOBAL_ERROR;
 exports.globalError = globalError;
+
+exports.RESET_ERROR = RESET_ERROR;
+exports.resetError = resetError;
