@@ -1,14 +1,14 @@
-var React = require('react');
-var TestUtils = require('react-addons-test-utils');
-var chai = require('chai');
-var should = chai.should();
-var expect = chai.expect;
-var Provider = require('react-redux').Provider;
+const React = require('react');
+const TestUtils = require('react-addons-test-utils');
+const chai = require('chai');
+const should = chai.should();
+const expect = chai.expect;
+const Provider = require('react-redux').Provider;
 
-var store = require('../js/store');
-var actions = require('../js/actions/index');
-var WeatherApp = require('../js/components/weather-app');
-var CurrentConditions = require('../js/components/current-conditions');
+const store = require('../js/store');
+const actions = require('../js/actions/index');
+const WeatherApp = require('../js/components/weather-app');
+const CurrentConditions = require('../js/components/current-conditions');
 
 describe('WeatherApp Component', () => {
   it('Renders the component',  () => {

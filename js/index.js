@@ -1,11 +1,11 @@
 require('babel-polyfill');
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Provider = require('react-redux').Provider;
+const React = require('react');
+const ReactDOM = require('react-dom');
+const Provider = require('react-redux').Provider;
 
-var actions = require('./actions/index');
-var store = require('./store');
-var WeatherApp = require('./components/weather-app');
+const actions = require('./actions/index');
+const store = require('./store');
+const WeatherApp = require('./components/weather-app');
 
 document.addEventListener('DOMContentLoaded', () => {
     store.dispatch(actions.getLoc())

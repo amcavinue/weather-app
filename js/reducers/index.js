@@ -1,6 +1,6 @@
-var actions = require('../actions/index');
-var store = require('../store');
-var update = require('react-addons-update');
+const actions = require('../actions/index');
+const store = require('../store');
+const update = require('react-addons-update');
 const combineReducers = require('redux').combineReducers;
 
 const initialState = {
@@ -60,7 +60,7 @@ const weatherReducer = (state = initialState.weather, action) => {
             }
         });
     } else if (action.type === actions.GET_FORECAST_HOURLY_SUCCESS) {
-        var hours = [];
+        let hours = [];
         // Only get the next 15 hours (3 hour increments * 5 times).
         for (let i = 0; i < 5; i++) {
             hours[i] = {
@@ -75,7 +75,7 @@ const weatherReducer = (state = initialState.weather, action) => {
            }
         });
     } else if (action.type === actions.GET_FORECAST_DAILY_SUCCESS) {
-        var days = [];
+        let days = [];
         // Only get the next 5 days.
         for (let i = 0; i < 5; i++) {
             days[i] = {

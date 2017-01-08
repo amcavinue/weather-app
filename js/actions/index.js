@@ -7,12 +7,12 @@ function getCurrWeather(lat, long) {
     }
     
     return (dispatch) => {
-        var init = {
+        const init = {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
         };
-        var url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
+        const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
         
         return fetch(url, init)
         .then(function(response) {
@@ -40,7 +40,7 @@ function getCurrWeather(lat, long) {
     };
 }
 
-var GET_CURR_WEATHER_SUCCESS = 'GET_CURR_WEATHER_SUCCESS';
+const GET_CURR_WEATHER_SUCCESS = 'GET_CURR_WEATHER_SUCCESS';
 function getCurrWeatherSuccess(data) {
     return {
         type: GET_CURR_WEATHER_SUCCESS,
@@ -48,7 +48,7 @@ function getCurrWeatherSuccess(data) {
     };
 }
 
-var GET_CURR_WEATHER_ERROR = 'GET_CURR_WEATHER_ERROR';
+const GET_CURR_WEATHER_ERROR = 'GET_CURR_WEATHER_ERROR';
 function getCurrWeatherError(err) {
     return {
         type: GET_CURR_WEATHER_ERROR,
@@ -62,12 +62,12 @@ function getForecastHourly(lat, long) {
     }
     
     return (dispatch) => {
-        var init = {
+        const init = {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
         };
-        var url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
+        const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
         
         return fetch(url, init)
         .then(function(response) {
@@ -95,7 +95,7 @@ function getForecastHourly(lat, long) {
     };
 }
 
-var GET_FORECAST_HOURLY_SUCCESS = 'GET_FORECAST_HOURLY_SUCCESS';
+const GET_FORECAST_HOURLY_SUCCESS = 'GET_FORECAST_HOURLY_SUCCESS';
 function getForecastHourlySuccess(data) {
     return {
         type: GET_FORECAST_HOURLY_SUCCESS,
@@ -103,7 +103,7 @@ function getForecastHourlySuccess(data) {
     };
 }
 
-var GET_FORECAST_HOURLY_ERROR = 'GET_FORECAST_HOURLY_ERROR';
+const GET_FORECAST_HOURLY_ERROR = 'GET_FORECAST_HOURLY_ERROR';
 function getForecastHourlyError(err) {
     return {
         type: GET_FORECAST_HOURLY_ERROR,
@@ -117,12 +117,12 @@ function getForecastDaily(lat, long) {
     }
     
     return (dispatch) => {
-        var init = {
+        const init = {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
         };
-        var url = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
+        const url = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
         
         return fetch(url, init)
         .then(function(response) {
@@ -150,7 +150,7 @@ function getForecastDaily(lat, long) {
     };
 }
 
-var GET_FORECAST_DAILY_SUCCESS = 'GET_FORECAST_DAILY_SUCCESS';
+const GET_FORECAST_DAILY_SUCCESS = 'GET_FORECAST_DAILY_SUCCESS';
 function getForecastDailySuccess(data) {
     return {
         type: GET_FORECAST_DAILY_SUCCESS,
@@ -158,7 +158,7 @@ function getForecastDailySuccess(data) {
     };
 }
 
-var GET_FORECAST_DAILY_ERROR = 'GET_FORECAST_DAILY_ERROR';
+const GET_FORECAST_DAILY_ERROR = 'GET_FORECAST_DAILY_ERROR';
 function getForecastDailyError(err) {
     return {
         type: GET_FORECAST_DAILY_ERROR,
@@ -168,7 +168,7 @@ function getForecastDailyError(err) {
 
 function getLoc() {
     return (dispatch) => {
-        var init = {
+        const init = {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
@@ -188,7 +188,7 @@ function getLoc() {
             return response.json();
         })
         .then(function(data) {
-            var location = data.loc.match(/-?\d+(\.\d+)?/gi);
+            let location = data.loc.match(/-?\d+(\.\d+)?/gi);
             location = [Number(location[0]), Number(location[1])];
             return dispatch(
                 getLocSuccess(location[0], location[1])
@@ -202,7 +202,7 @@ function getLoc() {
     };
 }
 
-var GET_LOC_SUCCESS = 'GET_LOC_SUCCESS';
+const GET_LOC_SUCCESS = 'GET_LOC_SUCCESS';
 function getLocSuccess(lat, long) {
     return {
         type: GET_LOC_SUCCESS,
@@ -211,7 +211,7 @@ function getLocSuccess(lat, long) {
     };
 }
 
-var GET_LOC_ERROR = 'GET_LOC_ERROR';
+const GET_LOC_ERROR = 'GET_LOC_ERROR';
 function getLocError(err) {
     return {
         type: GET_LOC_ERROR,
@@ -219,7 +219,7 @@ function getLocError(err) {
     };
 }
 
-var GLOBAL_ERROR = 'GLOBAL_ERROR';
+const GLOBAL_ERROR = 'GLOBAL_ERROR';
 function globalError(err) {
     return {
         type: GLOBAL_ERROR,
@@ -227,7 +227,7 @@ function globalError(err) {
     };
 }
 
-var RESET_ERROR = 'RESET_ERROR';
+const RESET_ERROR = 'RESET_ERROR';
 function resetError() {
     return {
         type: RESET_ERROR

@@ -1,12 +1,12 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var connect = require('react-redux').connect;
+const React = require('react');
+const ReactDOM = require('react-dom');
+const connect = require('react-redux').connect;
 
-var CurrentConditions = require('./current-conditions');
-var ForecastDaily = require('./forecast-daily');
-var actions = require('../actions/index');
+const CurrentConditions = require('./current-conditions');
+const ForecastDaily = require('./forecast-daily');
+const actions = require('../actions/index');
 
-var WeatherApp = React.createClass({
+const WeatherApp = React.createClass({
     componentDidUpdate() {
         if (this.props.error) {
             this.props.dispatch(actions.resetError());
@@ -27,7 +27,7 @@ var WeatherApp = React.createClass({
     }
 });
 
-var mapStateToProps = function(state, props) {
+const mapStateToProps = function(state, props) {
     return {
         coords: state.coords,
         error: state.error,
@@ -35,6 +35,6 @@ var mapStateToProps = function(state, props) {
     };
 };
 
-var Container = connect(mapStateToProps)(WeatherApp);
+const Container = connect(mapStateToProps)(WeatherApp);
 
 module.exports = Container;

@@ -1,12 +1,12 @@
-var React = require('react');
-var TestUtils = require('react-addons-test-utils');
-var chai = require('chai');
-var should = chai.should();
-var expect = chai.expect;
+const React = require('react');
+const TestUtils = require('react-addons-test-utils');
+const chai = require('chai');
+const should = chai.should();
+const expect = chai.expect;
 
-var store = require('../js/store');
-var actions = require('../js/actions/index');
-var CurrentConditions = require('../js/components/current-conditions');
+const store = require('../js/store');
+const actions = require('../js/actions/index');
+const CurrentConditions = require('../js/components/current-conditions');
 
 describe('CurrentConditions Component', () => {
   it('Renders the component',  () => {
