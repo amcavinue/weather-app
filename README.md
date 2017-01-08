@@ -4,7 +4,7 @@ An app for everyone that simply displays your local weather, built in a maintain
 ![Screenshot](https://)
 
 ### Overview
-The goal of this app was to create a simple weather app using perfect coding practices. It can easily be scaled, extended, and maintained by another React developer.
+The goal of this app is to create a simple weather app using perfect coding practices. It can easily be scaled, extended, and maintained by another React developer.
 
 ### Use Case
 Why is this app useful? It allows you to get the weather from your current location, and see what it will be like hours and days from now.

@@ -3,7 +3,7 @@ const store = require('../store');
 
 function getCurrWeather(lat, long) {
     if (typeof lat !== 'number' && typeof long !== 'number') {
-        return store.dispatch(globalError('Invalid input for latitude and longitude.'));
+        return store.dispatch(globalError('Invalid input for latitude and longitude in getCurrWeather.'));
     }
     
     return (dispatch) => {
@@ -58,7 +58,7 @@ function getCurrWeatherError(err) {
 
 function getForecastHourly(lat, long) {
     if (typeof lat !== 'number' && typeof long !== 'number') {
-        return store.dispatch(globalError('Invalid input for latitude and longitude.'));
+        return store.dispatch(globalError('Invalid input for latitude and longitude in getForecastHourly.'));
     }
     
     return (dispatch) => {
@@ -113,7 +113,7 @@ function getForecastHourlyError(err) {
 
 function getForecastDaily(lat, long) {
     if (typeof lat !== 'number' && typeof long !== 'number') {
-        return store.dispatch(globalError('Invalid input for latitude and longitude.'));
+        return store.dispatch(globalError('Invalid input for latitude and longitude in getForecastDaily.'));
     }
     
     return (dispatch) => {

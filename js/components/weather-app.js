@@ -29,8 +29,7 @@ var WeatherApp = React.createClass({
 
 var mapStateToProps = function(state, props) {
     return {
-        lat: state.lat,
-        long: state.long,
+        coords: state.coords,
         error: state.error,
         weather: state.weather
     };
