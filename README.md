@@ -1,8 +1,6 @@
 # Weather App
 An app for everyone that simply displays your local weather, built in a maintainable and scalable way.
 
-![Screenshot](https://)
-
 ### Overview
 The goal of this app is to create a simple weather app using perfect coding practices. It can easily be scaled, extended, and maintained by another React developer.
 
