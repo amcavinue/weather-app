@@ -1,14 +1,18 @@
-var fetch = require('isomorphic-fetch');
+const fetch = require('isomorphic-fetch');
+const store = require('../store');
 
 function getCurrWeather(lat, long) {
+    if (typeof lat !== 'number' && typeof long !== 'number') {
+        return store.dispatch(globalError('Invalid input for latitude and longitude.'));
+    }
+    
     return (dispatch) => {
         var init = {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
         };
-        var url = 'http://api.openweathermap.org/data/2.5/weather?lat=' + 
-            lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        var url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
         
         return fetch(url, init)
         .then(function(response) {
@@ -53,14 +57,17 @@ function getCurrWeatherError(err) {
 }
 
 function getForecastHourly(lat, long) {
+    if (typeof lat !== 'number' && typeof long !== 'number') {
+        return store.dispatch(globalError('Invalid input for latitude and longitude.'));
+    }
+    
     return (dispatch) => {
         var init = {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
         };
-        var url = 'http://api.openweathermap.org/data/2.5/forecast?lat=' + 
-            lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        var url = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
         
         return fetch(url, init)
         .then(function(response) {
@@ -105,14 +112,17 @@ function getForecastHourlyError(err) {
 }
 
 function getForecastDaily(lat, long) {
+    if (typeof lat !== 'number' && typeof long !== 'number') {
+        return store.dispatch(globalError('Invalid input for latitude and longitude.'));
+    }
+    
     return (dispatch) => {
         var init = {
             method: 'GET',
             mode: 'cors',
             cache: 'default'
         };
-        var url = 'http://api.openweathermap.org/data/2.5/forecast/daily?lat=' + 
-            lat + '&lon=' + long + '&appid=877900e60dce2e112e618c4047774060&units=imperial';
+        var url = `http://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${long}&appid=877900e60dce2e112e618c4047774060&units=imperial`;
         
         return fetch(url, init)
         .then(function(response) {
@@ -209,6 +219,14 @@ function getLocError(err) {
     }
 }
 
+var GLOBAL_ERROR = 'GLOBAL_ERROR';
+function globalError(err) {
+    return {
+        type: GLOBAL_ERROR,
+        err: err
+    }
+}
+
 exports.getCurrWeather = getCurrWeather;
 exports.GET_CURR_WEATHER_SUCCESS = GET_CURR_WEATHER_SUCCESS;
 exports.getCurrWeatherSuccess = getCurrWeatherSuccess;
@@ -232,3 +250,6 @@ exports.GET_LOC_SUCCESS = GET_LOC_SUCCESS;
 exports.getLocSuccess = getLocSuccess;
 exports.GET_LOC_ERROR = GET_LOC_ERROR;
 exports.getLocError = getLocError;
+
+exports.GLOBAL_ERROR = GLOBAL_ERROR;
+exports.globalError = globalError;

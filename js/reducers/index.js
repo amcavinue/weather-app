@@ -2,9 +2,10 @@ var actions = require('../actions/index');
 var store = require('../store');
 var update = require('react-addons-update');
 
-var initialState = {
+const initialState = {
     lat: null,
     long: null,
+    error: null,
     weather: {
         currently: {
             summary: null,
@@ -18,9 +19,7 @@ var initialState = {
     }
 };
 
-var reducer = (state, action) => {
-    state = state || initialState;
-    
+var reducer = (state = initialState, action) => {
     if (action.type === actions.GET_CURR_WEATHER_SUCCESS) {
         return update(state, {
             weather: {
@@ -31,9 +30,6 @@ var reducer = (state, action) => {
                 }
             }
         });
-    } else if (action.type === actions.GET_CURR_WEATHER_ERROR) {
-        console.log('An error occurred: ' + action.err);
-        return state;
     } else if (action.type === actions.GET_FORECAST_HOURLY_SUCCESS) {
         var hours = [];
         // Only get the next 15 hours (3 hour increments * 5 times).
@@ -51,9 +47,6 @@ var reducer = (state, action) => {
                }
            } 
         });
-    } else if (action.type === actions.GET_FORECAST_HOURLY_ERROR) {
-        console.log('An error occurred: ' + action.err);
-        return state;
     } else if (action.type === actions.GET_FORECAST_DAILY_SUCCESS) {
         var days = [];
         // Only get the next 5 days.
@@ -71,17 +64,22 @@ var reducer = (state, action) => {
                }
            } 
         });
-    } else if (action.type === actions.GET_FORECAST_DAILY_ERROR) {
-        console.log('An error occurred: ' + action.err);
-        return state;
     } else if (action.type === actions.GET_LOC_SUCCESS) {
         return update(state, {
             lat: {$set: action.lat},
             long: {$set: action.long}
         });
-    } else if (action.type === actions.GET_LOC_ERROR) {
-        console.log('And error occurred: ' + action.err);
-        return state;
+    } else if (
+        action.type === actions.GET_FORECAST_DAILY_ERROR ||
+        action.type === actions.GET_LOC_ERROR ||
+        action.type === actions.GET_CURR_WEATHER_ERROR ||
+        action.type === actions.GET_FORECAST_HOURLY_ERROR ||
+        action.type === actions.GLOBAL_ERROR
+    ) {
+        console.log('An error occurred: ' + action.err);
+        return update(state, {
+            error: {$set: 'An error occurred while loading data for your area. Please reload the page or try again later.'}
+        });
     }
     
     return state;
