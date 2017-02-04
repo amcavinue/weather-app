@@ -11,6 +11,11 @@ const CurrentConditions = (props) => {
         }]
     };
     
+    function upperCaseFirst(str){
+        // http://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript
+        return str.charAt(0).toUpperCase() + str.substring(1);
+    }
+    
     for (let i = 0; i < 5; i++) {
         hourlyTemp.labels.push(moment().add(3 * (i + 1), 'h').format("ha"));
         hourlyTemp.datasets[0].data.push(props.weather.forecast.hours[i].temperature);
@@ -19,7 +24,7 @@ const CurrentConditions = (props) => {
     return (
         <section>
             <h2>Currently</h2>
-            <h3>{ props.weather.currently.summary }</h3>
+            <h3>{ upperCaseFirst(props.weather.currently.summary) }</h3>
             <div>The temperature is { Math.round(props.weather.currently.temperature) }
                  &deg;F&#47;
                  { Math.round((props.weather.currently.temperature - 32) * (5/9)) }

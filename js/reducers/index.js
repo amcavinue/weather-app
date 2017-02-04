@@ -6,7 +6,9 @@ const combineReducers = require('redux').combineReducers;
 const initialState = {
     coords: {
         lat: null,
-        long: null
+        long: null,
+        city: null,
+        state: null
     },
     error: null,
     weather: {
@@ -43,7 +45,9 @@ const coordsReducer = (state = initialState.coords, action) => {
     if (action.type === actions.GET_LOC_SUCCESS) {
         return update(state, {
             lat: {$set: action.lat},
-            long: {$set: action.long}
+            long: {$set: action.long},
+            city: {$set: action.city},
+            state: {$set: action.state}
         });
     } 
     

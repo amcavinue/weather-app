@@ -191,7 +191,7 @@ function getLoc() {
             let location = data.loc.match(/-?\d+(\.\d+)?/gi);
             location = [Number(location[0]), Number(location[1])];
             return dispatch(
-                getLocSuccess(location[0], location[1])
+                getLocSuccess(location[0], location[1], data.city, data.region)
             );
         })
         .catch(function(error) {
@@ -203,11 +203,13 @@ function getLoc() {
 }
 
 const GET_LOC_SUCCESS = 'GET_LOC_SUCCESS';
-function getLocSuccess(lat, long) {
+function getLocSuccess(lat, long, city, state) {
     return {
         type: GET_LOC_SUCCESS,
         lat: lat,
-        long: long
+        long: long,
+        city: city,
+        state: state
     };
 }
 

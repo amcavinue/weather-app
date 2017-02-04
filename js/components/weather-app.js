@@ -19,8 +19,8 @@ const WeatherApp = React.createClass({
         
         return (
             <div>
-                <h1>Weather for your area</h1>
-                <CurrentConditions weather={this.props.weather} />
+                <h1>Weather for <span class="location">{this.props.coords.city + ', ' + this.props.coords.state}</span></h1>
+                <CurrentConditions weather={this.props.weather}/>
                 <ForecastDaily days={this.props.weather.forecast.days}/>
             </div>
         );
