@@ -4,7 +4,10 @@
 }
 
 body {
-  background-color: #f3f4f5;
+  /*background-color: #f3f4f5;*/
+  background: url('/assets/lightning-storm-weather-sky-53459.jpeg');
+  background-position: center;
+  background-size: cover;
   color: #333;
   font-family: 'Roboto', sans-serif;
   line-height: 1.5;
@@ -14,11 +17,16 @@ body {
 #app {
   max-width: 400px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: rgba(225, 225, 225, 0.7);
   padding: 1em;
   height: 100vh;
+  text-align: center;
 }
 
 .location {
-  color: #3781f5;
+  color: #29a9e8;
+}
+
+.currently {
+  color: #2918a9;
 }

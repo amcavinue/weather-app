@@ -23,8 +23,8 @@ const CurrentConditions = (props) => {
     
     return (
         <section>
-            <h2>Currently</h2>
-            <h3>{ upperCaseFirst(props.weather.currently.summary) }</h3>
+            <h2 className="currently">Currently</h2>
+            <h3 className="currently">{ upperCaseFirst(props.weather.currently.summary) }</h3>
             <div>The temperature is { Math.round(props.weather.currently.temperature) }
                  &deg;F&#47;
                  { Math.round((props.weather.currently.temperature - 32) * (5/9)) }
