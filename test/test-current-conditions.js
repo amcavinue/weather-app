@@ -37,7 +37,7 @@ describe('CurrentConditions Component', () => {
     expect(result.props.children[1].type).to.equal('h3');
     expect(result.props.children[2].type).to.equal('div');
     expect(result.props.children[3].type).to.equal('div');
-    expect(result.props.children[4].type).to.equal('h4');
+    expect(result.props.children[4].type).to.equal('h3');
     expect(result.props.children[5].type.displayName).to.equal('LineChart');
   });
 });
