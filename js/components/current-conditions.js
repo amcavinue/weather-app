@@ -31,7 +31,7 @@ const CurrentConditions = (props) => {
                  &deg;C
              </div>
             <div>The humidity is { Math.round(props.weather.currently.humidity) }&#37;</div>
-            <h4>Hourly</h4>
+            <h3>Hourly</h3>
             <LineChart data={ hourlyTemp } />
         </section>
     );

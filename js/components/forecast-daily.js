@@ -18,7 +18,7 @@ const ForecastDaily = (props) => {
   
   return (
     <section>
-      <h2>Your 5 day forecast</h2>
+      <h3>Your 5 day forecast</h3>
       <LineChart data={dailyTemp} />
     </section>
   );
