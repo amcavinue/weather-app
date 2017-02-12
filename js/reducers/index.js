@@ -24,6 +24,64 @@ const initialState = {
             hours: [], // Hours and days should be filled with objects identical to this.currently.
             days: []   // Hours and days should be filled with objects identical to this.currently.
         }
+    },
+    popularCities: {
+        newYorkCity: {
+            lat: 40.712784,
+            long: -74.005941,
+            city: 'New York',
+            state: 'New York',
+            stateAbbr: 'ny'
+        },
+        losAngeles: {
+            lat: 34.052234,
+            long: -118.243685,
+            city: 'Lost Angeles',
+            state: 'California',
+            stateAbbr: 'ca'
+        },
+        chicago: {
+            lat: 41.878114,
+            long: -87.629798,
+            city: 'Chicago',
+            state: 'Illinois',
+            stateAbbr: 'il'
+        },
+        seattle: {
+            lat: 47.606209,
+            long: -122.332071,
+            city: 'Seattle',
+            state: 'Washington',
+            stateAbbr: 'wa'
+        },
+        washingtonDC: {
+            lat: 38.907192,
+            long: -77.036871,
+            city: 'Washington D. C.',
+            state: 'District of Columbia',
+            stateAbbr: 'md'
+        },
+        dallas: {
+            lat: 32.776664,
+            long: -96.796988,
+            city: 'Dallas',
+            state: 'Texas',
+            stateAbbr: 'tx'
+        },
+        miami: {
+            lat: 25.761680,
+            long: -80.191790,
+            city: 'Miami',
+            state: 'Florida',
+            stateAbbr: 'fl'
+        },
+        philadelphia: {
+            lat: 39.952584,
+            long: -75.165222,
+            city: 'Philadelphia',
+            state: 'Pennsylvania',
+            stateAbbr: 'pa'
+        }
     }
 };
 
@@ -102,10 +160,15 @@ const weatherReducer = (state = initialState.weather, action) => {
     return state;
 };
 
+const popularCitiesReducer = (state = initialState.popularCities, action) => {
+    return state;
+};
+
 const reducer = combineReducers({
     coords: coordsReducer,
     error: errorReducer,
-    weather: weatherReducer
+    weather: weatherReducer,
+    popularCities: popularCitiesReducer
 });
 
 exports.reducer = reducer;

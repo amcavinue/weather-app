@@ -8,6 +8,12 @@ const actions = require('../actions/index');
 const store = require('../store');
 
 const WeatherApp = React.createClass({
+    getInitialState() {
+        return {
+            city: this.props.coords.city,
+            state: this.props.coords.state
+        };
+    },
     componentDidUpdate() {
         if (this.props.error) {
             this.props.dispatch(actions.resetError());
@@ -47,7 +53,7 @@ const WeatherApp = React.createClass({
             <div>
                 <div id="weather-app">
                     <div id="sidebar"></div>
-                    <h1>Weather for <span className="location">{this.props.coords.city + ', ' + this.props.coords.state}</span></h1>
+                    <h1>Weather for <span className="location">{this.state.city + ', ' + this.state.state}</span></h1>
                     <CurrentConditions weather={this.props.weather}/>
                     <ForecastDaily days={this.props.weather.forecast.days}/>
                 </div>
@@ -60,7 +66,8 @@ const mapStateToProps = function(state, props) {
     return {
         coords: state.coords,
         error: state.error,
-        weather: state.weather
+        weather: state.weather,
+        popularCities: state.popularCities
     };
 };
 
