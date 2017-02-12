@@ -43,17 +43,41 @@ const WeatherApp = React.createClass({
         });
     },
     showLocalCity() {
-        console.log('local', 46);
+        store.dispatch(actions.getCurrWeather(this.props.coords.lat, this.props.coords.long))
+        .then(() => {
+            let state = store.getState();
+            return store.dispatch(actions.getForecastHourly(this.props.coords.lat, this.props.coords.long));
+        })
+        .then(() => {
+            let state = store.getState();
+            return store.dispatch(actions.getForecastDaily(this.props.coords.lat, this.props.coords.long));
+        });
+        
+        this.setState({
+            city: this.props.coords.city,
+            state: this.props.coords.state
+        });
     },
     showPopularCity(e) {
-        console.log(e.target, 49);
+        store.dispatch(actions.getCurrWeather(this.props.popularCities[e.target].lat, this.props.popularCities[e.target].long))
+        .then(() => {
+            let state = store.getState();
+            return store.dispatch(actions.getForecastHourly(this.props.popularCities[e.target].lat, this.props.popularCities[e.target].long));
+        })
+        .then(() => {
+            let state = store.getState();
+            return store.dispatch(actions.getForecastDaily(this.props.popularCities[e.target].lat, this.props.popularCities[e.target].long));
+        });
+        
+        this.setState({
+            city: this.props.popularCities[e.target].city,
+            state: this.props.popularCities[e.target].state
+        });
     },
     render() {
         if (this.props.error) {
             alert('An error occurred while loading data for your area. Please reload the page or try again later.');
         }
-        
-        console.log(store.getState());
         
         return (
             <div>
