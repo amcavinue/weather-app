@@ -25,15 +25,15 @@ const WeatherApp = React.createClass({
             flatButton: true,
             nodes: [
                 { id: 'level-1', text: 'Cities', img: 'icon-folder', expanded: true, group: true, groupShowHide: false, collapsible: false,
-                  nodes: [ { id: 'level-1-0', text: this.props.coords.city, icon: 'stateface stateface-' + this.props.coords.stateAbbr, selected: true },
-                           { id: 'level-1-1', text: 'New York City', icon: 'stateface stateface-ny' },
-                           { id: 'level-1-2', text: 'Los Angeles', icon: 'stateface stateface-ca' },
-                           { id: 'level-1-3', text: 'Chicago', icon: 'stateface stateface-il' },
-                           { id: 'level-1-4', text: 'Seattle', icon: 'stateface stateface-wa' },
-                           { id: 'level-1-5', text: 'Washington D.C.', icon: 'stateface stateface-md' },
-                           { id: 'level-1-6', text: 'Dallas', icon: 'stateface stateface-tx' },
-                           { id: 'level-1-7', text: 'Miami', icon: 'stateface stateface-fl' },
-                           { id: 'level-1-8', text: 'Philadelphia', icon: 'stateface stateface-pa' }
+                  nodes: [ { id: 'localCity', text: this.props.coords.city, icon: 'stateface stateface-' + this.props.coords.stateAbbr, selected: true, onClick: this.showLocalCity },
+                           { id: 'newYorkCity', text: 'New York City', icon: 'stateface stateface-ny', onClick: this.showPopularCity },
+                           { id: 'losAngeles', text: 'Los Angeles', icon: 'stateface stateface-ca', onClick: this.showPopularCity },
+                           { id: 'chicago', text: 'Chicago', icon: 'stateface stateface-il', onClick: this.showPopularCity },
+                           { id: 'seattle', text: 'Seattle', icon: 'stateface stateface-wa', onClick: this.showPopularCity },
+                           { id: 'washingtonDC', text: 'Washington D.C.', icon: 'stateface stateface-md', onClick: this.showPopularCity },
+                           { id: 'dallas', text: 'Dallas', icon: 'stateface stateface-tx', onClick: this.showPopularCity },
+                           { id: 'miami', text: 'Miami', icon: 'stateface stateface-fl', onClick: this.showPopularCity },
+                           { id: 'philadelphia', text: 'Philadelphia', icon: 'stateface stateface-pa', onClick: this.showPopularCity }
                          ]
                 }
             ],
@@ -41,6 +41,12 @@ const WeatherApp = React.createClass({
                 $('#sidebar').css('width', (event.goFlat ? '35px' : '200px'));
             }
         });
+    },
+    showLocalCity() {
+        console.log('local', 46);
+    },
+    showPopularCity(e) {
+        console.log(e.target, 49);
     },
     render() {
         if (this.props.error) {
