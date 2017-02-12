@@ -17,7 +17,7 @@ const WeatherApp = React.createClass({
             name : 'sidebar',
             flatButton: true,
             nodes: [
-                { id: 'level-1', text: 'Cities', img: 'icon-folder', expanded: true, group: true, groupShowHide: false,
+                { id: 'level-1', text: 'Cities', img: 'icon-folder', expanded: true, group: true, groupShowHide: false, collapsible: false,
                   nodes: [ { id: 'level-1-1', text: 'Los Angeles', icon: 'stateface stateface-ca' },
                            { id: 'level-1-2', text: 'New York City', icon: 'stateface stateface-ny' },
                            { id: 'level-1-3', text: 'Chicago', icon: 'stateface stateface-il' }
@@ -36,9 +36,8 @@ const WeatherApp = React.createClass({
         
         return (
             <div>
-                <div id="sidebar"></div>
-                
                 <div id="weather-app">
+                    <div id="sidebar"></div>
                     <h1>Weather for <span className="location">{this.props.coords.city + ', ' + this.props.coords.state}</span></h1>
                     <CurrentConditions weather={this.props.weather}/>
                     <ForecastDaily days={this.props.weather.forecast.days}/>

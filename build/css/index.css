@@ -5,27 +5,13 @@
 
 body {
   /*background-color: #f3f4f5;*/
-  background: url('/assets/lightning-storm-weather-sky-53459.jpeg');
+  background: url('/assets/lightning-storm-weather-sky-53459.jpg');
   background-position: center;
   background-size: cover;
   color: #333;
   font-family: 'Roboto', sans-serif;
   line-height: 1.5;
   height: 100%;
-}
-
-#sidebar {
-  height: 100vh; 
-  width: 200px; 
-  float: right;
-}
-
-.w2ui-sidebar .w2ui-sidebar-div .w2ui-selected:before {
-  border: none;
-}
-
-.stateface:before {
-  font-size: 1.5em;
 }
 
 #weather-app {
@@ -35,6 +21,7 @@ body {
   padding: 1em;
   height: 100vh;
   text-align: center;
+  position: relative;
 }
 
 .location {
@@ -44,4 +31,30 @@ body {
 
 .currently {
   color: #29a9e8;
+}
+
+#sidebar {
+  width: 200px;
+  height: 100%;
+  float: right;
+  position: absolute;
+  top: 0px;
+  right: 100%;
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.w2ui-sidebar .w2ui-sidebar-top .w2ui-flat-left, .w2ui-sidebar .w2ui-sidebar-top .w2ui-flat-right {
+  background-color: transparent;
+}
+
+.w2ui-sidebar .w2ui-sidebar-div .w2ui-node {
+  background-color: transparent;
+}
+
+.w2ui-sidebar .w2ui-sidebar-div .w2ui-selected:before {
+  border: none;
+}
+
+.stateface:before {
+  font-size: 1.5em;
 }
