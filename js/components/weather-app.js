@@ -19,7 +19,8 @@ const WeatherApp = React.createClass({
             flatButton: true,
             nodes: [
                 { id: 'level-1', text: 'Cities', img: 'icon-folder', expanded: true, group: true, groupShowHide: false, collapsible: false,
-                  nodes: [ { id: 'level-1-1', text: 'New York City', icon: 'stateface stateface-ny' },
+                  nodes: [ { id: 'level-1-0', text: this.props.coords.city, icon: 'stateface stateface-' + this.props.coords.stateAbbr, selected: true },
+                           { id: 'level-1-1', text: 'New York City', icon: 'stateface stateface-ny' },
                            { id: 'level-1-2', text: 'Los Angeles', icon: 'stateface stateface-ca' },
                            { id: 'level-1-3', text: 'Chicago', icon: 'stateface stateface-il' },
                            { id: 'level-1-4', text: 'Seattle', icon: 'stateface stateface-wa' },
