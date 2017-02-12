@@ -3,12 +3,15 @@ const store = require('../store');
 const update = require('react-addons-update');
 const combineReducers = require('redux').combineReducers;
 
+const stateToAbbr = require('../state-to-abbr');
+
 const initialState = {
     coords: {
         lat: null,
         long: null,
         city: null,
-        state: null
+        state: null,
+        stateAbbr: null
     },
     error: null,
     weather: {
@@ -47,7 +50,8 @@ const coordsReducer = (state = initialState.coords, action) => {
             lat: {$set: action.lat},
             long: {$set: action.long},
             city: {$set: action.city},
-            state: {$set: action.state}
+            state: {$set: action.state},
+            stateAbbr: {$set: stateToAbbr(action.state, 'abbr')}
         });
     } 
     

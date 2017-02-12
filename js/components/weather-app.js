@@ -5,6 +5,7 @@ const connect = require('react-redux').connect;
 const CurrentConditions = require('./current-conditions');
 const ForecastDaily = require('./forecast-daily');
 const actions = require('../actions/index');
+const store = require('../store');
 
 const WeatherApp = React.createClass({
     componentDidUpdate() {
@@ -18,9 +19,14 @@ const WeatherApp = React.createClass({
             flatButton: true,
             nodes: [
                 { id: 'level-1', text: 'Cities', img: 'icon-folder', expanded: true, group: true, groupShowHide: false, collapsible: false,
-                  nodes: [ { id: 'level-1-1', text: 'Los Angeles', icon: 'stateface stateface-ca' },
-                           { id: 'level-1-2', text: 'New York City', icon: 'stateface stateface-ny' },
-                           { id: 'level-1-3', text: 'Chicago', icon: 'stateface stateface-il' }
+                  nodes: [ { id: 'level-1-1', text: 'New York City', icon: 'stateface stateface-ny' },
+                           { id: 'level-1-2', text: 'Los Angeles', icon: 'stateface stateface-ca' },
+                           { id: 'level-1-3', text: 'Chicago', icon: 'stateface stateface-il' },
+                           { id: 'level-1-4', text: 'Seattle', icon: 'stateface stateface-wa' },
+                           { id: 'level-1-5', text: 'Washington D.C.', icon: 'stateface stateface-md' },
+                           { id: 'level-1-6', text: 'Dallas', icon: 'stateface stateface-tx' },
+                           { id: 'level-1-7', text: 'Miami', icon: 'stateface stateface-fl' },
+                           { id: 'level-1-8', text: 'Philadelphia', icon: 'stateface stateface-pa' }
                          ]
                 }
             ],
@@ -33,6 +39,8 @@ const WeatherApp = React.createClass({
         if (this.props.error) {
             alert('An error occurred while loading data for your area. Please reload the page or try again later.');
         }
+        
+        console.log(store.getState());
         
         return (
             <div>
