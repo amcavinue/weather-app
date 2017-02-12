@@ -40,7 +40,8 @@ body {
   position: absolute;
   top: 0px;
   right: 100%;
-  background-color: rgba(255, 255, 255, 0.85) !important;
+  background-color: rgba(245, 245, 245, 0.85) !important;
+  border-right: 1px solid #a5a5a5;
 }
 
 .w2ui-sidebar .w2ui-sidebar-top .w2ui-flat-left, .w2ui-sidebar .w2ui-sidebar-top .w2ui-flat-right {
