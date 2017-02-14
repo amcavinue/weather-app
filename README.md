@@ -1,7 +1,7 @@
 # Weather App
 An app for everyone that simply displays your local weather, built in a maintainable and scalable way.
 
-![Screenshot](https://github.com/amcavinue/image-organizer/blob/master/weather-app-combined.jpg)
+![Screenshot](https://github.com/amcavinue/weather-app/blob/master/weather-app-combined.jpg)
 
 ### Overview
 The goal of this app is to create a simple weather app using perfect coding practices. It can easily be scaled, extended, and maintained by another React developer.
