@@ -11,7 +11,8 @@ const WeatherApp = React.createClass({
     getInitialState() {
         return {
             city: this.props.coords.city,
-            state: this.props.coords.state
+            state: this.props.coords.state,
+            localCity: true
         };
     },
     componentDidUpdate() {
@@ -25,7 +26,7 @@ const WeatherApp = React.createClass({
             flatButton: true,
             nodes: [
                 { id: 'level-1', text: 'Cities', img: 'icon-folder', expanded: true, group: true, groupShowHide: false, collapsible: false,
-                  nodes: [ { id: 'localCity', text: this.props.coords.city, icon: 'stateface stateface-' + this.props.coords.stateAbbr, selected: true, onClick: this.showLocalCity },
+                  nodes: [ { id: 'localCity', text: 'Your Location', icon: 'stateface stateface-' + this.props.coords.stateAbbr, selected: true, onClick: this.showLocalCity },
                            { id: 'newYorkCity', text: 'New York City', icon: 'stateface stateface-ny', onClick: this.showPopularCity },
                            { id: 'losAngeles', text: 'Los Angeles', icon: 'stateface stateface-ca', onClick: this.showPopularCity },
                            { id: 'chicago', text: 'Chicago', icon: 'stateface stateface-il', onClick: this.showPopularCity },
@@ -55,7 +56,8 @@ const WeatherApp = React.createClass({
         
         this.setState({
             city: this.props.coords.city,
-            state: this.props.coords.state
+            state: this.props.coords.state,
+            localCity: true
         });
     },
     showPopularCity(e) {
@@ -71,7 +73,8 @@ const WeatherApp = React.createClass({
         
         this.setState({
             city: this.props.popularCities[e.target].city,
-            state: this.props.popularCities[e.target].state
+            state: this.props.popularCities[e.target].state,
+            localCity: false
         });
     },
     render() {
@@ -83,7 +86,7 @@ const WeatherApp = React.createClass({
             <div>
                 <div id="weather-app">
                     <div id="sidebar"></div>
-                    <h1>Weather for <span className="location">{this.state.city + ', ' + this.state.state}</span></h1>
+                    <h1>Weather for <span className="location">{this.state.city + ', ' + this.state.state + (this.state.localCity ? ' (your location)' : '')}</span></h1>
                     <CurrentConditions weather={this.props.weather}/>
                     <ForecastDaily days={this.props.weather.forecast.days}/>
                 </div>
