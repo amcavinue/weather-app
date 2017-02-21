@@ -36,7 +36,7 @@ const initialState = {
         losAngeles: {
             lat: 34.052234,
             long: -118.243685,
-            city: 'Lost Angeles',
+            city: 'Los Angeles',
             state: 'California',
             stateAbbr: 'ca'
         },
@@ -57,7 +57,7 @@ const initialState = {
         washingtonDC: {
             lat: 38.907192,
             long: -77.036871,
-            city: 'Washington D. C.',
+            city: 'Washington',
             state: 'District of Columbia',
             stateAbbr: 'md'
         },

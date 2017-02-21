@@ -42,6 +42,10 @@ const WeatherApp = React.createClass({
                 $('#sidebar').css('width', (event.goFlat ? '35px' : '200px'));
             }
         });
+        
+        if (window.innerWidth <= 500) {
+            w2ui['sidebar'].goFlat();
+        }
     },
     showLocalCity() {
         store.dispatch(actions.getCurrWeather(this.props.coords.lat, this.props.coords.long))
