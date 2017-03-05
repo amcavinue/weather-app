@@ -1,6 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const LineChart = require("react-chartjs").Line;
+const LineChart = require("react-chartjs-2").Line;
 const moment = require('moment');
 
 const CurrentConditions = (props) => {
@@ -9,6 +9,26 @@ const CurrentConditions = (props) => {
         datasets: [{
             data: []
         }]
+    };
+    
+    let chartOptions = {
+        legend: {
+            display: false
+        },
+        tooltips: {
+            enabled: false
+        },
+        scales: {
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Farenheight'
+                }
+            }],
+            xAxes: [{
+                
+            }]
+        }
     };
     
     function upperCaseFirst(str){
@@ -32,7 +52,7 @@ const CurrentConditions = (props) => {
              </div>
             <div>The humidity is { Math.round(props.weather.currently.humidity) }&#37;</div>
             <h3>Hourly</h3>
-            <LineChart data={ hourlyTemp } />
+            <LineChart data={hourlyTemp} options={chartOptions} />
         </section>
     );
 };

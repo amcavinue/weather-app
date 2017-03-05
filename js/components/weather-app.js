@@ -23,7 +23,7 @@ const WeatherApp = React.createClass({
     componentDidMount() {
         $('#sidebar').w2sidebar({
             name : 'sidebar',
-            flatButton: true,
+            flatButton: window.innerWidth <= 500 ? false : true,
             nodes: [
                 { id: 'level-1', text: 'Cities', img: 'icon-folder', expanded: true, group: true, groupShowHide: false, collapsible: false,
                   nodes: [ { id: 'localCity', text: 'Your Location', icon: 'stateface stateface-' + this.props.coords.stateAbbr, selected: true, onClick: this.showLocalCity },
