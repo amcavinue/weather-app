@@ -15,6 +15,7 @@ const initialState = {
     },
     error: null,
     weather: {
+        main: 'Clear',
         currently: {
             summary: null,
             temperature: null,
@@ -119,6 +120,7 @@ const coordsReducer = (state = initialState.coords, action) => {
 const weatherReducer = (state = initialState.weather, action) => {
     if (action.type === actions.GET_CURR_WEATHER_SUCCESS) {
         return update(state, {
+            main: {$set: action.data.weather[0].main},
             currently: {
                 summary: {$set: action.data.weather[0].description},
                 temperature: {$set: action.data.main.temp},

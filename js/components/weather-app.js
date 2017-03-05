@@ -81,10 +81,37 @@ const WeatherApp = React.createClass({
             localCity: false
         });
     },
+    setBackground() {
+        console.log(this.props.weather.main, 85);
+        
+        if (this.props.weather.main === 'Thunderstorm') {
+            document.body.style.background = 'url(/assets/thunderstorm.jpg) no-repeat center center fixed';
+        } else if (this.props.weather.main === 'Drizzle') {
+            document.body.style.background = 'url(/assets/drizzle.jpg) no-repeat center center fixed';
+        } else if (this.props.weather.main === 'Rain') {
+            document.body.style.background = 'url(/assets/rain.jpg) no-repeat center center fixed';
+        } else if (this.props.weather.main === 'Snow') {
+            document.body.style.background = 'url(/assets/snow.jpg) no-repeat center center fixed';
+        } else if (this.props.weather.main === 'Atmosphere') {
+            document.body.style.background = 'url(/assets/atmosphere.jpg) no-repeat center center fixed';
+        } else if (this.props.weather.main === 'Clear') {
+            document.body.style.background = 'url(/assets/clear.jpg) no-repeat center center fixed';
+        } else if (this.props.weather.main === 'Clouds') {
+            document.body.style.background = 'url(/assets/clouds.jpg) no-repeat center center fixed';
+        } else if (this.props.weather.main === 'Extreme') {
+            document.body.style.background = 'url(/assets/extreme.jpg) no-repeat center center fixed';
+        } else if (this.props.weather.main === 'Additional') {
+            document.body.style.background = 'url(/assets/additional.jpg) no-repeat center center fixed';
+        } else {
+            document.body.style.background = 'url(/assets/clear.jpg) no-repeat center center fixed';
+        }
+    },
     render() {
         if (this.props.error) {
             alert('An error occurred while loading data for your area. Please reload the page or try again later.');
         }
+        
+        this.setBackground();
         
         return (
             <div>
