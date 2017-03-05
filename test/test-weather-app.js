@@ -44,4 +44,4 @@ describe('WeatherApp Component', () => {
     TestUtils.isElementOfType(result.type.WrappedComponent[0], WeatherApp);
     TestUtils.isCompositeComponent(result.type.WrappedComponent[0]);
   });
-*/});
+});*/
